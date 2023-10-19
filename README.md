@@ -41,6 +41,9 @@ $pip install -r requirements.txt
 $python main.py
 ```
 
+## POSTMAN COLLECTION :book:
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/23458410-b9b8524c-891a-4304-abde-2c9a1563fef7?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D23458410-b9b8524c-891a-4304-abde-2c9a1563fef7%26entityType%3Dcollection%26workspaceId%3Defb2f2ab-d95a-495f-bc2b-ef74d93aa7a9)
 
 
 #### DOCUMENTAÇÃO
@@ -117,11 +120,6 @@ $python main.py
 #### ENDPOINTS PARA CLIENTS
 CREATE, LIST, UPDATE
 
-
-
-## POSTMAN COLLECTION :book:
-
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/23458410-b9b8524c-891a-4304-abde-2c9a1563fef7?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D23458410-b9b8524c-891a-4304-abde-2c9a1563fef7%26entityType%3Dcollection%26workspaceId%3Defb2f2ab-d95a-495f-bc2b-ef74d93aa7a9)
 
 
 
