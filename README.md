@@ -43,9 +43,9 @@ $python main.py
 
 
 
-## DOCUMENTAÇÃO DA API :mag_right:
+#### DOCUMENTAÇÃO
 
-###### Acessar [LINK] "{{BASE_URL}}/docs"
+- Acessar [LINK] "{{BASE_URL}}/docs"
 
 
 #### ENDPOINTS PARA MENU
