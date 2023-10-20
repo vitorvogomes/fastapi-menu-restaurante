@@ -1,6 +1,7 @@
-from pydantic import BaseModel, conint
+from pydantic import BaseModel, conint, validator
 from typing import Optional, List
 from enum import Enum
+from datetime import datetime
 
 class OrderStatusModel(str, Enum):
     AguardandoPagamento = "Pendente"
@@ -36,6 +37,24 @@ class OrderModel(BaseModel):
     order_items: List[OrderItemsModel]
     order_status: OrderStatusModel
     order_total: Optional[float] = None
+    order_date: str
+    client_email: str
+
+    @validator("order_date")
+    def validate_order_date(cls, value):
+        try:
+            # Tente analisar a data no formato "DD/MM/YYYY"
+            order_date = datetime.strptime(value, "%d/%m/%Y").date()
+        except ValueError:
+            raise ValueError("Data inválida. Use o formato 'DD/MM/YYYY'.")
+
+        # Obtenha a data atual
+        current_date = datetime.now().date()
+
+        if order_date < current_date:
+            raise ValueError("Data inválida.Data deve ser igual ou posterior à data atual.")
+
+        return value
 
     class Config:
         json_schema_extra = {
@@ -51,6 +70,8 @@ class OrderModel(BaseModel):
                         "item_qtd": 2
                     }
                 ],
-                "order_status": "Em preparação ou Saiu para entrega ou Entregue ou Cancelado"
+                "order_status": "Em preparação ou Saiu para entrega ou Entregue ou Cancelado",
+                "order_date": "01/01/2023",
+                "client_email": "email@teste.com"
             }
         }

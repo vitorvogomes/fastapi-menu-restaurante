@@ -31,7 +31,9 @@ async def create_new_order(order_data: OrderModel):
                     order_data.order_num,
                     order_data.order_items,
                     order_data.order_status,
-                    calculate_order_total(order_data)
+                    calculate_order_total(order_data),
+                    order_data.order_date,
+                    order_data.client_email
                 )
                 return {"success": f"O pedido com o número: '{order_data.order_num}' foi criado!"}
             else:
@@ -118,7 +120,9 @@ def formatted_list(data): # Formatação do retorno das pesquisas no banco de da
             "order_num": item[1],
             "order_items": json.loads(item[2]), 
             "order_status": item[3],
-            "order_total": item[4]
+            "order_total": item[4],
+            "order_date": item[5],
+            "client_email": item[6]
         }
         order_data.append(item_data)
     return order_data

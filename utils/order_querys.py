@@ -5,14 +5,14 @@ import sqlite3
 import uuid
 import json
 
-def create_order(order_num: int, order_items: List[OrderItemsModel], order_status: str, order_total: float):
+def create_order(order_num: int, order_items: List[OrderItemsModel], order_status: str, order_total: float, order_date: str, client_email: str):
     order_id = str(uuid.uuid4()) #Gera um UUID
     order_items_json = json.dumps([item.dict() for item in order_items]) # Serializa a lista de itens para JSON
     with sqlite3.connect("./db_main/restaurant.db") as db:
         cursor = db.cursor()
         cursor.execute(
-            "INSERT INTO OrdersData VALUES (?,?,?,?,?)",
-            (order_id, order_num, order_items_json, order_status, order_total)
+            "INSERT INTO OrdersData VALUES (?,?,?,?,?,?,?)",
+            (order_id, order_num, order_items_json, order_status, order_total, order_date, client_email)
         )
         db.commit()
 
