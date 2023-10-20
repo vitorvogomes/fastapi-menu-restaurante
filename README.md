@@ -78,7 +78,8 @@ $python main.py
 #### ENDPOINTS PARA ORDERS
 
 ###### GET "/orders" --> GET ORDERS LIST
-- Forneçe uma lista dos pedidos feitos, incluindo detalhes como número do pedido, itens, status e total.
+- Forneçe uma lista dos pedidos, incluindo detalhes como número do pedido, itens, status, total, e-mail do cliente.
+- Possui parâmetros de consulta para filtrar através da data ou do status do pedido.
 
 ###### POST "/orders" --> CREATE ORDER
 - Permite que os clientes realizem pedidos, especificando os itens do cardápio que desejam e a quantidade.
@@ -90,21 +91,21 @@ $python main.py
 - Permite que os clientes obtenham informações detalhadas sobre um pedido específico.
 
 ###### PUT "/orders/{order_num}/satus" --> UPDATE ORDER STATUS
-- Permite que os funcionários do restaurante atualizem o status de um pedido, "Pendente", "Confirmado", "Retirada", "Entreue" ou "Cancelado".
+- Permite que os funcionários do restaurante atualizem o status de um pedido, "Pendente", "Confirmado", "Retirada", "Entregue" ou "Cancelado".
 
 
 #### ENDPOINTS PARA BOOKING
 
 ###### GET "/booking" --> GET BOOKING LIST
-- Forneçe uma lista das reservas feitas, incluindo detalhes como data, hora, número de pessoas e status.
+- Forneçe uma lista das reservas feitas, incluindo detalhes como data, número de pessoas e status.
 - Possui parâmetros de consulta para filtrar através da data marcada ou do status da reserva.
 
 ###### POST "/booking" --> CREATE BOOKING
-- Permite que os clientes façam reservas para mesas no restaurante, especificando a data, hora e número de pessoas.
-- Se o número máximo de pessoas do estabelecimento for ultrapassado, não será permitido criar uma nova reserva.
+- Permite que os clientes façam reservas para mesas no restaurante, especificando a data, e número de pessoas.
+- Se o número máximo de pessoas do estabelecimento for ultrapassado no dia, não será permitido criar uma nova reserva.
 
 ###### PUT "/booking/{booking_id}" --> UPDATE BOOKING STATUS
-- Permite que o restaurante atualize o status de uma reserva, como "Solicitado", "Confirmado" ou "Cancelado".
+- Permite que o restaurante atualize o status de uma reserva, como "Solicitado", "Confirmado", "Finalizado" ou "Cancelado".
 - O status é atualizado através do parâmetro de consulta "new_status".
 
 
