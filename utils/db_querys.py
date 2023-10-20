@@ -13,6 +13,6 @@ def create_database():
         """)
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS BookingData 
-            (booking_id TEXT PRIMARY KEY, num_people INTEGER, booking_status TEXT, bookin_date TEXT, client_email TEXT)
+            (booking_id TEXT PRIMARY KEY, num_people INTEGER, booking_status TEXT, booking_date TEXT, client_email TEXT)
         """)
         db.commit()

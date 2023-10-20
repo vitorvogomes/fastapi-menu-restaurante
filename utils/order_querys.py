@@ -51,3 +51,14 @@ def get_order_by_id(order_id: int):
 
         order_data = cursor.fetchall()
         return order_data
+
+def order_query_params(order_date: str, order_status: str):
+    with sqlite3.connect("./db_main/restaurant.db") as db:
+        cursor = db.cursor()
+        cursor.execute(
+            "SELECT * FROM OrdersData WHERE order_date=? OR order_status=?",
+            (order_date, order_status)
+        )
+
+        order_data = cursor.fetchall()
+        return order_data

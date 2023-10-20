@@ -10,10 +10,14 @@ import json
 order_router = APIRouter()
 
 @order_router.get("/orders", status_code=status.HTTP_200_OK)
-async def order_list():
+async def order_list(date: str | None = None, status: str | None = None):
     try:
-        orders_data = get_orders_list()
-        return {"orders": formatted_list(orders_data)}
+        if date or status:
+            orders_data = order_query_params(date, status)
+            return {"reservas": formatted_list(orders_data)}
+        else:
+            orders_data = get_orders_list()
+            return {"orders": formatted_list(orders_data)}
     except Exception as error:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, 

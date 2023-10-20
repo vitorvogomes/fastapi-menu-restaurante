@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from utils.db_querys import create_database
 from routes.menu_routes import menu_router
 from routes.order_routes import order_router
+from routes.booking_routes import booking_router
 
 app = FastAPI(
     title="Restaurante",
@@ -14,10 +15,10 @@ app = FastAPI(
     },
 )
 
-# Menu Routes
+# App Routers
 app.include_router(menu_router)
 app.include_router(order_router)
-
+app.include_router(booking_router)
 
 if __name__ == '__main__':
     import uvicorn

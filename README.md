@@ -95,23 +95,24 @@ $python main.py
 
 #### ENDPOINTS PARA BOOKING
 
-###### GET "/booking" --> GET BOOKINGS LIST
+###### GET "/booking" --> GET BOOKING LIST
 - Forneçe uma lista das reservas feitas, incluindo detalhes como data, hora, número de pessoas e status.
+- Possui parâmetros de consulta para filtrar através da data marcada ou do status da reserva.
 
 ###### POST "/booking" --> CREATE BOOKING
 - Permite que os clientes façam reservas para mesas no restaurante, especificando a data, hora e número de pessoas.
-
-###### GET "/booking/{booking_id}" --> GET BOOKING BY ID
-- Permite que os clientes obtenham informações detalhadas sobre uma reserva específica.
+- Se o número máximo de pessoas do estabelecimento for ultrapassado, não será permitido criar uma nova reserva.
 
 ###### PUT "/booking/{booking_id}" --> UPDATE BOOKING STATUS
-- Permite que o restaurante atualize o status de uma reserva, como "aguardando", "confirmada" ou "cancelada." 
+- Permite que o restaurante atualize o status de uma reserva, como "Solicitado", "Confirmado" ou "Cancelado".
+- O status é atualizado através do parâmetro de consulta "new_status".
 
 
 #### ENDPOINTS PARA REVIEWS
 
 ###### GET "/reviews" --> GET REVIEWS LIST
 - Forneçe uma lista de avaliações feitas por clientes, incluindo detalhes como classificação, comentários e data.
+- Possui parâmetros de consulta para filtrar através da data da avaliação ou da classificação.
 
 ###### POST "/reviews" --> CREATE REVIEW
 - Permite que os clientes avaliem o restaurante e deixem comentários sobre sua experiência.
