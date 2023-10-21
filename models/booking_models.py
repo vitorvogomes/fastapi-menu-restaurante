@@ -25,7 +25,7 @@ class BookingModel(BaseModel):
         current_date = datetime.now().date()
 
         if booking_date < current_date:
-            raise ValueError("Data inválida.Data deve ser igual ou posterior à data atual.")
+            raise ValueError("Data inválida. Data deve ser igual ou posterior à data atual.")
         
         return value
 

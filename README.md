@@ -112,16 +112,26 @@ $python main.py
 #### ENDPOINTS PARA REVIEWS
 
 ###### GET "/reviews" --> GET REVIEWS LIST
-- Forneçe uma lista de avaliações feitas por clientes, incluindo detalhes como classificação, comentários e data.
-- Possui parâmetros de consulta para filtrar através da data da avaliação ou da classificação.
+- Forneçe uma lista de avaliações feitas por clientes, incluindo detalhes como uma nota de classificação, comentários e data.
+- Possui parâmetros de consulta para filtrar através da data da avaliação ou da nota de classificação.
 
 ###### POST "/reviews" --> CREATE REVIEW
 - Permite que os clientes avaliem o restaurante e deixem comentários sobre sua experiência.
 
 
 #### ENDPOINTS PARA CLIENTS
-CREATE, LIST, UPDATE
+###### GET "/clients" --> GET CLIENTS LIST
+- Forneçe uma lista de clientes cadastrados, incluindo detalhes como nome, e-mail, endereço e forma de pagamento.
+- Possui parâmetros de consulta para filtrar através do nome.
 
+###### POST "/clients" --> CREATE CLIENT
+- Permite que o restaurante cadastre os dados do cliente.
+
+###### PUT "/clients/{client_email}" --> UPDATE CLIENT DATA
+- Permite que o restaurante atualize o endereço ou a forma de pagamento de um cliente.
+
+###### DELETE "/clients/{client_email}" --> DELETE CLIENT DATA
+- Permite que o restaurante apague um cliente específico através do e-mail.
 
 
 
@@ -169,9 +179,8 @@ CREATE, LIST, UPDATE
 |----------------------|    
 | review_id (PK)       |    [uuid]
 | review_description   |    [str]
-| nps_score            |    [str]
+| review_score         |    [str]
 | review_date          |    [DateTime]
-| order_num (FK)       |    [str]
 | client_email (FK)    |    [str]*
 
 

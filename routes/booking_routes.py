@@ -11,10 +11,9 @@ async def booking_list(date: str | None = None, status: str | None = None):
     try:
         if date or status:
             booking_list = booking_query_params(date, status)
-            return {"reservas": formatted_list(booking_list)}
         else:
             booking_list = get_booking_list()
-            return {"reservas": formatted_list(booking_list)}
+        return {"reservas": formatted_list(booking_list)}
     except Exception as error:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -27,11 +26,11 @@ async def create_new_booking(booking_data: BookingModel):
         booking = validate_client_booking(booking_data.booking_date, booking_data.client_email)
         if not booking:
             booking_list = get_booking_list()
-            crowd = count_total_people(booking_list)
+            crowd = num_people_on_day(booking_list, booking_data.booking_date)
             if crowd:
                 return JSONResponse(
                     status_code=status.HTTP_401_UNAUTHORIZED,
-                    content={"detail": f"O número máximo de pessoas para reservas no restaurante já foi ultrapassado."}
+                    content={"detail": f"O número máximo de reservas para data: {booking_data.booking_date} já foi ultrapassado."}
                 )
             else:
                 create_booking(
@@ -83,12 +82,14 @@ def formatted_list(data):
         booking_data.append(item_data)
     return booking_data
 
-def count_total_people(data):
+def num_people_on_day(booking_list, date):
     total_people = 0
-    for item in data:
-        total_people += item[1]
+    current_date = date
+    for item in booking_list:
+        if item[3] == date:
+            total_people += item[1]
     
-    if total_people > 150:
+    if total_people >= 100:
         return True
     else:
         return False
