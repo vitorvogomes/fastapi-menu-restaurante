@@ -19,4 +19,8 @@ def create_database():
             CREATE TABLE IF NOT EXISTS ReviewsData
             (review_id TEXT PRIMARY KEY, review_description TEXT, review_score INTEGER, review_date TEXT, client_email TEXT)
         """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS ClientData
+            (user_id TEXT PRIMARY KEY, client_name TEXT, client_email TEXT UNIQUE KEY, client_password TEXT)
+        """)
         db.commit()
